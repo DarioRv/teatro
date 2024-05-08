@@ -1,0 +1,41 @@
+<h2>Tickets emitidos</h2>
+@if (tickets.length > 0) {
+<table class="table border rounded table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Tipo Espectador</th>
+      <th scope="col">Precio Real</th>
+      <th scope="col">Precio Cobrado</th>
+      <th scope="col">DNI</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (ticket of tickets; track $index) {
+    <tr>
+      <th scope="row">{{ ticket.id }}</th>
+      <td>{{ ticket.fecha | date : "dd/MM/yyyy" }}</td>
+      <td>{{ ticket.tipoEspectador | espectador }}</td>
+      <td>{{ ticket.precioReal }}</td>
+      <td>{{ ticket.precioCobrado }}</td>
+      <td>{{ ticket.dni }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+} @else {
+<div class="alert alert-info text-center fs-4 fw-bold" role="alert">
+  No hay datos disponibles
+</div>
+
+}
+
+<button
+  class="btn btn-warning"
+  title="Llenar base de datos con ejemplos"
+  (click)="llenarBaseDeDatos()"
+>
+  Llenar base de datos
+</button>
