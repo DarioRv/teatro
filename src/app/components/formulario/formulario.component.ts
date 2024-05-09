@@ -16,7 +16,6 @@ export class FormularioComponent {
   constructor(private ticketService: TicketService) {}
 
   agregarTicket(): void {
-    console.log(this.ticket);
     this.calcularPrecioCobrado();
     this.ticketService.agregarTicket(this.ticket);
     this.ticket = new Ticket();
