@@ -11,12 +11,9 @@ import { TicketService } from '../../services/ticket.service';
   styleUrl: './formulario.component.css',
 })
 export class FormularioComponent {
-  precioTicket: number = 5000;
   ticket: Ticket = new Ticket();
 
-  constructor(private ticketService: TicketService) {
-    this.ticket.precioReal = this.precioTicket;
-  }
+  constructor(private ticketService: TicketService) {}
 
   agregarTicket(): void {
     console.log(this.ticket);

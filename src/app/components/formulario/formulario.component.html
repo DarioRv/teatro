@@ -20,7 +20,7 @@
       name="precioReal"
       placeholder="Precio real"
       required
-      readonly
+      (change)="calcularPrecioCobrado()"
       [(ngModel)]="ticket.precioReal"
     />
     <label for="precioReal">Precio Real</label>
@@ -28,6 +28,7 @@
   <select
     class="form-select mb-3"
     name="tipoEspectador"
+    (change)="calcularPrecioCobrado()"
     [(ngModel)]="ticket.tipoEspectador"
   >
     <option value="na" selected>Tipo Espectador</option>
@@ -46,6 +47,7 @@
     />
     <label for="fecha">Fecha cobro</label>
   </div>
+  @if (ticket.tipoEspectador === 'l' && ticket.precioReal !== 0) {
   <div class="form-floating mb-3">
     <input
       type="number"
@@ -54,11 +56,12 @@
       name="precioCobrado"
       placeholder="precio-cobrado"
       required
-      (focus)="calcularPrecioCobrado()"
+      readonly
       [(ngModel)]="ticket.precioCobrado"
     />
     <label for="precioCobrado">Precio Cobrado</label>
   </div>
+  }
   <button class="btn btn-primary mx-auto" (click)="agregarTicket()">
     Enviar
   </button>
